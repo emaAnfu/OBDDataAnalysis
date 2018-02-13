@@ -107,16 +107,16 @@ labels = ones(size(Xfft_splitted,1),1) * (+1);
 % Add them to dataset 
 [X,Y]=CreateDataset(X,Y,[Xfft_splitted./maxRPM Yfft_splitted./maxSpeed], labels);
 %% 10 - Test15
-clc
-% Get data from the txt file created by phone and split into subsessions
-rpmFile = './UsedForDataset/27-12-17_14-44-14_rpm_measure_converted.txt';
-speedFile = './UsedForDataset/27-12-17_14-44-15_speed_measure_converted.txt';
-plotFlag=0;
-[Xsplitted, Ysplitted, Xfft_splitted, Yfft_splitted] = SplitMeasure (rpmFile, speedFile, plotFlag);
-% Prepare classification labels (ema)
-labels = ones(size(Xfft_splitted,1),1) * (+1);
-% Add them to dataset 
-[X,Y]=CreateDataset(X,Y,[Xfft_splitted./maxRPM Yfft_splitted./maxSpeed], labels);
+% clc
+% % Get data from the txt file created by phone and split into subsessions
+% rpmFile = './UsedForDataset/27-12-17_14-44-14_rpm_measure_converted.txt';
+% speedFile = './UsedForDataset/27-12-17_14-44-15_speed_measure_converted.txt';
+% plotFlag=0;
+% [Xsplitted, Ysplitted, Xfft_splitted, Yfft_splitted] = SplitMeasure (rpmFile, speedFile, plotFlag);
+% % Prepare classification labels (ema)
+% labels = ones(size(Xfft_splitted,1),1) * (+1);
+% % Add them to dataset 
+% [X,Y]=CreateDataset(X,Y,[Xfft_splitted./maxRPM Yfft_splitted./maxSpeed], labels);
 
 
 

@@ -1,6 +1,6 @@
 function [X,Y] = CreateDataset(X, Y, newX, newY)
 % function CreateDataset()
-% the function collect add a mesaure data session to the dataset
+% the function collect add a measure data session to the dataset
 %
 % X - current dataset (variables): each row is an example, each column a
 % variable (-1 if first measure)

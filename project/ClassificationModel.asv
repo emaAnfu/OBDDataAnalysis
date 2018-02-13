@@ -47,16 +47,8 @@ labels = ones(size(Xfft_splitted,1),1) * (+1);
 % Normalize RPM and speed
 maxRPM=4000;
 maxSpeed=130;
-Xtestm = [Xfft_splitted./maxRPM Yfft_splitted./maxSpeed];
-Ytestm = labels;
-
-% Select actual variables to use to classify
-Xtestm=[Xtestm(:,1:p) Xtestm(:,201:201+p-1)];
-
-% Predict on this little test set
-Ypred_little = sign(regularizedKernLSTest(c, Xtr, kernel, sigma, Xtestm));
-err_little = (sign(Ypred_little)~=sign(Ytestm));
-
+Xtestm= [Xfft_splitted./maxRPM Yfft_splitted./maxSpeed];
+[Xtestm,Ytestm]=CreateDataset(X,Y,[Xfft_splitted./maxRPM Yfft_splitted./maxSpeed], labels);
 
 
 
