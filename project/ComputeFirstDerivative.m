@@ -56,7 +56,7 @@ for i = 1:m
     end
 
     % Compute the first derivative of the rpm signal
-    Xder(i,:) = diff(Xrow)/Ts;
+    Xder(i,:) = diff(Xrow);
 
     if (plotFlag)
         % Plot the first derivative
@@ -77,6 +77,8 @@ for i = 1:m
         ylabel('km/h')
     end
 
+    % Compute the first derivative of the speed signal (divide for Ts to
+    % have acceleration)
     Yder(i,:) = diff(Yrow)/Ts;
 
     if (plotFlag)

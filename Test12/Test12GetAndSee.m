@@ -10,10 +10,10 @@ close all
 rpmFile = '27-12-17_12-02-44_rpm_measure_converted.txt';
 speedFile = '27-12-17_12-02-44_speed_measure_converted.txt';
 
-splitFactor = 5;
+splitFactor = 40;
 Ts = 0.250;       
 
-[Xsplitted, Ysplitted, tsplitted] = SplitMeasure (rpmFile, speedFile, Ts, splitFactor, 0);
+[Xsplitted, Ysplitted, tsplitted] = SplitMeasure (rpmFile, speedFile, Ts, splitFactor, 1);
 
 [Xfft, Yfft] = ComputeFFT(Xsplitted, Ysplitted, tsplitted, Ts, 0);
 

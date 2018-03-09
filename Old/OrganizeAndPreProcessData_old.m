@@ -1,3 +1,8 @@
+
+
+
+%% DEPRECATED: I used this to create a dataset in which the features were the discrete frequency
+
 clc
 clear
 close all
