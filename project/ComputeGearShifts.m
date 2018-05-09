@@ -1,11 +1,12 @@
 % This function computes the mean time interval between one gear shift and
 % another and the mean amplitude of deltaRPM
 
-function [meanDeltaT_gs, meanDeltaRPM] = ComputeGearShifts(R, Rder, t)
+function [meanDeltaT_gs, meanDeltaRPM, countGS] = ComputeGearShifts(R, Rder, t)
 % function ComputeGearShifts()
 %
 % meanDeltaT_gs - vector 
 % meanDeltaRPM - vector
+% countGS - vector, number of gear shift for each subsession
 %
 % ComputeGearShifts();
 
@@ -17,14 +18,12 @@ n = size(Rder,2);
 % Prepare output vectors
 meanDeltaT_gs = zeros(m,1);
 meanDeltaRPM = zeros(m,1);
-
-% Create a matrix m*n where a 1 means there has been a gear shift, 0 no
-R_gearShifts = zeros(m,n);
+countGS = zeros (m,1);
 
 % Threshold of a gear shift
-delta = 300;
+delta = 150;
 
-% Identification of gear shifts
+% Create a matrix m*n where a 1 means there has been a gear shift, 0 no
 R_gearShifts = Rder > delta;
 
 % Compute average deltaT between gear shifts
@@ -43,6 +42,12 @@ for i = 1:m
     sel = (R_gearShifts(i,:)==1);
     temp = Rder(i,sel);
     meanDeltaRPM(i) = mean(temp);
+end
+
+% Count of gear shifts for each subsession
+for i = 1:m
+    sel = (R_gearShifts(i,:)==1);
+    countGS(i) = size(sel,1);
 end
 
 end

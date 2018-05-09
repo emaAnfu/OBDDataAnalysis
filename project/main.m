@@ -31,6 +31,9 @@ t = (0:L-1)*Ts;         % Time vector
 % Compute first derivative of rpm (R) and speed (V)
 [Rder, Vder] = ComputeFirstDerivative (R, V, t, Ts, 0);
 
+% Compute number of gear shifts
+[meanDeltaT_gs, meanDeltaRPM, countGS] = ComputeGearShifts(R, Rder, t);
+
 %% First trial
 
 
@@ -38,7 +41,7 @@ t = (0:L-1)*Ts;         % Time vector
 if (true)    
 
 figure 
-i = 6;
+i = 3;
 
 subplot(2,2,1)
 plot(t, R(i,:))
@@ -63,8 +66,6 @@ plot(t(1,1:end-1), Vder(i,:))
 title(['first derivative of speed example n° ', num2str(i)]);
 xlabel('t (s)')
 ylabel('km/h/s')
-
-I_meanAcc_labels(i)
 
 end
 
