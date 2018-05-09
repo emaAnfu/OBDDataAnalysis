@@ -1,6 +1,8 @@
 % Classifier IIc: given data related to deceleration moment, build
 % classification model 
 
+% WARNING: until now, it just plots the data with scatter
+
 function [] = IIc_Classifier_DecelerationPhase(R, V, Rder, Vder, Y)
 % function IIc_Classifier_DecelerationPhase()
 %

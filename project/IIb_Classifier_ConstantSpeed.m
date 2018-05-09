@@ -1,6 +1,8 @@
 % Classifier IIb: given data related to constant speed moment, build
 % classification model on the basis of mean speed and mean rpm
 
+% WARNING: until now, it just plots the data with scatter
+
 function [] = IIb_Classifier_ConstantSpeed(R, V, Rder, Vder, Y)
 % function IIb_Classifier_ConstantSpeed()
 %

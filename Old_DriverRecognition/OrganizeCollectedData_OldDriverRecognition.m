@@ -1,8 +1,10 @@
+
+% USED TO CREATE THE DATASET AIMED TO RECOGNIZE MY DRIVING STYLE FROM THAT
+% ONE OF MY MOTHER
+
 clc
 clear
 close all
-
-% TODO: change the labels. Now I want to recognise urban from highway
 
 % A value for all the measures (not the Ts, that could be chosen as
 % the meanDeltaT of each measure)

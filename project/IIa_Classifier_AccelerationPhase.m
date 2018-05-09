@@ -1,6 +1,8 @@
 % Classifier IIa: given data related to acceleration moment, build
 % classification model
 
+% WARNING: until now, it just plots the data with scatter
+
 function [] = IIa_Classifier_AccelerationPhase(R, V, Rder, Vder, Y)
 % function IIa_Classifier_AccelerationPhase()
 %
