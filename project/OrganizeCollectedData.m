@@ -143,7 +143,7 @@ speedFile = './UsedForDataset/speed_dtest1.txt';
 Ts = 0.250;
 [Rsplitted, Vsplitted, tsplitted] = SplitMeasure (rpmFile, speedFile, Ts, splitFactor, 0);
 % Prepare classification labels (highway)
-labels = ones(size(Rsplitted,1),1) * (-1);
+labels = ones(size(Rsplitted,1),1) * (+1);
 % Update the two dataset, one for rpm and one for speed
 [R,Yr]=CreateDataset('rpmDataset', R, Yr, Rsplitted, labels);
 [V,Yv]=CreateDataset('speedDataset', V, Yv, Vsplitted, labels);
@@ -155,7 +155,7 @@ speedFile = './UsedForDataset/speed_dtest2.txt';
 Ts = 0.250;
 [Rsplitted, Vsplitted, tsplitted] = SplitMeasure (rpmFile, speedFile, Ts, splitFactor, 0);
 % Prepare classification labels (highway)
-labels = ones(size(Rsplitted,1),1) * (-1);
+labels = ones(size(Rsplitted,1),1) * (+1);
 % Update the two dataset, one for rpm and one for speed
 [R,Yr]=CreateDataset('rpmDataset', R, Yr, Rsplitted, labels);
 [V,Yv]=CreateDataset('speedDataset', V, Yv, Vsplitted, labels);
@@ -167,6 +167,30 @@ speedFile = './UsedForDataset/speed_dtest3.txt';
 Ts = 0.250;
 [Rsplitted, Vsplitted, tsplitted] = SplitMeasure (rpmFile, speedFile, Ts, splitFactor, 0);
 % Prepare classification labels (highway)
+labels = ones(size(Rsplitted,1),1) * (+1);
+% Update the two dataset, one for rpm and one for speed
+[R,Yr]=CreateDataset('rpmDataset', R, Yr, Rsplitted, labels);
+[V,Yv]=CreateDataset('speedDataset', V, Yv, Vsplitted, labels);
+%% 13 - Test_DuePartenzeOgni30sec
+clc
+% Get data from the txt file created by phone and split into subsessions
+rpmFile = './UsedForDataset/10-05-18_14-16-59_rpm_measure_converted.txt';
+speedFile = './UsedForDataset/10-05-18_14-17-00_speed_measure_converted.txt';
+Ts = 0.250;
+[Rsplitted, Vsplitted, tsplitted] = SplitMeasure (rpmFile, speedFile, Ts, splitFactor, 0);
+% Prepare classification labels (out-of-town)
+labels = ones(size(Rsplitted,1),1) * (-1);
+% Update the two dataset, one for rpm and one for speed
+[R,Yr]=CreateDataset('rpmDataset', R, Yr, Rsplitted, labels);
+[V,Yv]=CreateDataset('speedDataset', V, Yv, Vsplitted, labels);
+%% 14 - Test_UnaDecina
+clc
+% Get data from the txt file created by phone and split into subsessions
+rpmFile = './UsedForDataset/10-05-18_14-10-39_rpm_measure_converted.txt';
+speedFile = './UsedForDataset/10-05-18_14-10-39_speed_measure_converted.txt';
+Ts = 0.250;
+[Rsplitted, Vsplitted, tsplitted] = SplitMeasure (rpmFile, speedFile, Ts, splitFactor, 0);
+% Prepare classification labels (out-of-town)
 labels = ones(size(Rsplitted,1),1) * (-1);
 % Update the two dataset, one for rpm and one for speed
 [R,Yr]=CreateDataset('rpmDataset', R, Yr, Rsplitted, labels);

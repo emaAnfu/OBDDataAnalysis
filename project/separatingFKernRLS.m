@@ -19,7 +19,7 @@ function separatingFKernRLS(c, Xtr, kernel, sigma, Xts, Yts)
 % c = regularizedKernLSTrain(Xtr, Ytr, kernel, sigma, lambda);
 % separatingFKernRLS(c, Xtr, kernel, sigma, Xts, Yts);
 
-    step = 0.005;
+    step = 0.05;
 
     x = min(Xts(:,1)):step:max(Xts(:,1));
     y = min(Xts(:,2)):step:max(Xts(:,2));

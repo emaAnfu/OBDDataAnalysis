@@ -31,17 +31,32 @@ t = (0:L-1)*Ts;         % Time vector
 % Compute first derivative of rpm (R) and speed (V)
 [Rder, Vder] = ComputeFirstDerivative (R, V, t, Ts, 0);
 
-% Compute number of gear shifts
+% Compute number of gear shifts (in countGS)
 [meanDeltaT_gs, meanDeltaRPM, countGS] = ComputeGearShifts(R, Rder, t);
 
-%% First trial
+% Compute speed and acceleration data: mean, max and min
+
+meanSpeed = mean(V,2);
+maxSpeed = max(V,[],2);
+minSpeed = min(V,[],2);
+
+meanAcceleration = mean(Vder,2);
+maxAcceleration = max(Vder,[],2);
+minAcceleration = min(Vder,[],2);
+
+%% Create dataset
+
+X = [meanSpeed maxSpeed minSpeed meanAcceleration maxAcceleration ...
+        minAcceleration countGS];
+Y = Yr;
+save('obd_dataset.mat', 'X', 'Y');
 
 
 %% Plot an example, if you want
 if (true)    
 
 figure 
-i = 3;
+i = 9;
 
 subplot(2,2,1)
 plot(t, R(i,:))
