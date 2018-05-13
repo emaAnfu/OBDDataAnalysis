@@ -17,7 +17,7 @@ if (p == 2)
 end
 
 % Divide dataset into training set and test set
-n_train = 4;
+n_train = 7;
 n_test = n-n_train;
 [Xtr, Ytr, Xts, Yts] = randomSplitDataset(X, Y, n_train, n_test);
 
@@ -36,6 +36,16 @@ if (p == 2)
     separatingFKernRLS(c, Xtr, kernel, sigma, Xts, Yts)
 end 
 
+%% II attempt - regularized linear least squares
+
+lambda = 10e-5;
+w = regularizedLSTrain(Xtr, Ytr, lambda);
+Ypred = sign(regularizedLSTest(w, Xts));
+err = calcErr(Ypred, Yts);
+if (p == 2)
+    scatter(Xts(:,1),Xts(:,2),25,Yts);
+    separatingFRLS(w, Xts, Yts);    
+end 
 
 
 
