@@ -10,7 +10,7 @@ n=size(X,1);
 m=size(X,2);
 
 % Number of features to take
-p = m;
+p = 2;
 % Select actual variables to use to classify
 if (p == 2)
     X = [X(:,1) X(:,7)];

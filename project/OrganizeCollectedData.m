@@ -272,8 +272,54 @@ labels = ones(size(Rsplitted,1),1) * (+1);
 % Update the two dataset, one for rpm and one for speed
 [R,Yr]=CreateDataset('rpmDataset', R, Yr, Rsplitted, labels);
 [V,Yv]=CreateDataset('speedDataset', V, Yv, Vsplitted, labels);
-
-
+%% 16 - Test_EnnioCorsoItalia 1
+clc
+% Get data from the txt file created by phone and split into subsessions
+rpmFile = './UsedForDataset/13-05-18_20-15-57_rpm_measure_converted.txt';
+speedFile = './UsedForDataset/13-05-18_20-15-57_speed_measure_converted.txt';
+Ts = 0.250;
+[Rsplitted, Vsplitted, tsplitted] = SplitMeasure (rpmFile, speedFile, Ts, splitFactor, 0);
+% Prepare classification labels (out-of-town)
+labels = ones(size(Rsplitted,1),1) * (-1);
+% Update the two dataset, one for rpm and one for speed
+[R,Yr]=CreateDataset('rpmDataset', R, Yr, Rsplitted, labels);
+[V,Yv]=CreateDataset('speedDataset', V, Yv, Vsplitted, labels);
+%% 17 - Test_EnnioCorsoItalia 2
+clc
+% Get data from the txt file created by phone and split into subsessions
+rpmFile = './UsedForDataset/13-05-18_20-19-37_rpm_measure_converted.txt';
+speedFile = './UsedForDataset/13-05-18_20-15-57_speed_measure_converted.txt';
+Ts = 0.250;
+[Rsplitted, Vsplitted, tsplitted] = SplitMeasure (rpmFile, speedFile, Ts, splitFactor, 0);
+% Prepare classification labels (out-of-town)
+labels = ones(size(Rsplitted,1),1) * (-1);
+% Update the two dataset, one for rpm and one for speed
+[R,Yr]=CreateDataset('rpmDataset', R, Yr, Rsplitted, labels);
+[V,Yv]=CreateDataset('speedDataset', V, Yv, Vsplitted, labels);
+%% 18 - Test_EnnioAutostradaESopraelevata -> Autostrada
+clc
+% Get data from the txt file created by phone and split into subsessions
+rpmFile = './UsedForDataset/13-05-18_19-54-16_rpm_measure_converted.txt';
+speedFile = './UsedForDataset/13-05-18_19-54-16_speed_measure_converted.txt';
+Ts = 0.250;
+[Rsplitted, Vsplitted, tsplitted] = SplitMeasure (rpmFile, speedFile, Ts, splitFactor, 0);
+% Prepare classification labels (highway)
+labels = ones(size(Rsplitted,1),1) * (+1);
+% Update the two dataset, one for rpm and one for speed
+[R,Yr]=CreateDataset('rpmDataset', R, Yr, Rsplitted, labels);
+[V,Yv]=CreateDataset('speedDataset', V, Yv, Vsplitted, labels);
+%% 19 - Test_EnnioAutostradaESopraelevata -> Sopraelevata
+clc
+% Get data from the txt file created by phone and split into subsessions
+rpmFile = './UsedForDataset/13-05-18_20-10-04_rpm_measure_converted.txt';
+speedFile = './UsedForDataset/13-05-18_20-10-04_speed_measure_converted.txt';
+Ts = 0.250;
+[Rsplitted, Vsplitted, tsplitted] = SplitMeasure (rpmFile, speedFile, Ts, splitFactor, 0);
+% Prepare classification labels (out-of-town)
+labels = ones(size(Rsplitted,1),1) * (-1);
+% Update the two dataset, one for rpm and one for speed
+[R,Yr]=CreateDataset('rpmDataset', R, Yr, Rsplitted, labels);
+[V,Yv]=CreateDataset('speedDataset', V, Yv, Vsplitted, labels);
 
 
 
