@@ -16,14 +16,6 @@ if (p == 2)
     X = [X(:,1) X(:,7)];
 end
 
-% Dealing with offset: remove mean value from each example
-if(true)
-    M = mean(X);
-    for i = 1:p
-        X(:,i) = X(:,i) + M(i);
-    end
-end
-
 % Without the meanSpeed (maybe the most determinant feature)
 if(false)
     X = X(:, 4:7);
@@ -41,6 +33,9 @@ if (p==2)
     scatter(Xtr(:,1),Xtr(:,2),25,Ytr);
     title('Training set')
 end
+
+% Dealing with offset: remove mean value from each example
+M = 
 
 %% I attempt - kernel regularized least squares
 
@@ -74,8 +69,8 @@ end
 
 %% II attempt - regularized linear least squares
 
-%lambda = 10e-5;
-lambda = 0.01;
+% lambda = 10e-5;
+lambda = 0;
 w = regularizedLSTrain(Xtr, Ytr, lambda);
 Ypred = sign(regularizedLSTest(w, Xts));
 err = calcErr(Ypred, Yts);
@@ -94,33 +89,8 @@ if (p == 2)
     hold on
     sel = (sign(Ypred) ~= Yts);
     scatter(Xts(sel,1),Xts(sel,2),200,Yts(sel),'x'); 
-    
     hold off
     title('Test set RLS')
-end
-
-%% III Attempt - Logistic Regression
-
-i=1;
-
-for lambda = [0 1]
-    
-    c = linearLRTrain(Xtr, Ytr, lambda);
-    
-    [ypred, ppred] = linearLRTest(c, Xts);
-
-    figure(1)
-    subplot(1,2,i)
-    scatter(Xts(:,1),Xts(:,2),25,Yts);
-    hold on
-    sel = (sign(ypred) ~= Yts);
-    scatter(Xts(sel,1),Xts(sel,2),200,Yts(sel),'x'); 
-    separatingLinearLR(c, Xts, Yts)
-    title(['Test set with prediction error with \lambda: ', num2str(lambda)])
-    hold off
-        
-    i=i+1;
-
 end 
 
 

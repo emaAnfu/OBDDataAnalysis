@@ -18,6 +18,9 @@ function separatingFRLS(w, Xts, Yts)
 
     x0 = [min(Xts(:,1)); min(Xts(:,2))];
     x1 = [max(Xts(:,1)); max(Xts(:,2))];
+    
+%     x0 = [0; 0];
+%     x1 = [130; 50];
 
     XGrid = createGridPoints(x0, x1, step);
     

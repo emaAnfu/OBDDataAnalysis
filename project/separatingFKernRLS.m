@@ -23,6 +23,9 @@ function separatingFKernRLS(c, Xtr, kernel, sigma, Xts, Yts)
 
     x = min(Xts(:,1)):step:max(Xts(:,1));
     y = min(Xts(:,2)):step:max(Xts(:,2));
+    
+%     x = 0:step:130;
+%     y = 0:step:50;
 
     [X, Y] = meshgrid(x, y);
     XGrid = [X(:), Y(:)];
