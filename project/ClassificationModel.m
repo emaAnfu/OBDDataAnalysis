@@ -20,7 +20,7 @@ end
 if(true)
     M = mean(X);
     for i = 1:p
-        X(:,i) = X(:,i) + M(i);
+        X(:,i) = X(:,i) - M(i);
     end
 end
 
@@ -44,11 +44,12 @@ end
 
 %% I attempt - kernel regularized least squares
 
-sigmaArray = linspace(0.1 , 10 , 2);
-lambdaArray = [ 0 logspace(-5 , 0 , 2) ];
+sigmaArray = [0 1e-1 1 10];
+linspace(0.1 , 10 , 2);
+lambdaArray = [0 1e-5 1e-2 1e-1 1 1e1];
 kernel = 'gaussian';
-sigma=sigmaArray(2);
-lambda=lambdaArray(2);
+sigma=sigmaArray(2);%10
+lambda=lambdaArray(2);%1e-5
 c = regularizedKernLSTrain(Xtr, Ytr, kernel, sigma, lambda);
 Ypred = sign(regularizedKernLSTest(c, Xtr, kernel, sigma, Xts));
 err = calcErr(Ypred, Yts);
@@ -74,19 +75,25 @@ end
 
 %% II attempt - regularized linear least squares
 
-%lambda = 10e-5;
-lambda = 0.01;
+lambdaArray = [0 1e-5 1e-2 1e-1 1 1e1];
+nLambda = size(lambdaArray,2);
+err=ones(1,nLambda)*99;
+i=1;
+
+%lambda = lambda(6);
+
+for lambda = lambdaArray
 w = regularizedLSTrain(Xtr, Ytr, lambda);
 Ypred = sign(regularizedLSTest(w, Xts));
-err = calcErr(Ypred, Yts);
+err(i) = calcErr(Ypred, Yts);
 
 if (p == 2)
-    figure
+    figure(i);
     
     subplot(1,2,1)
     scatter(Xtr(:,1),Xtr(:,2),25,Ytr);
     separatingFRLS(w, Xtr, Ytr); 
-    title('Training set')    
+    title(['RLS Training set with prediction error with \lambda: ', num2str(lambda)])
     
     subplot(1,2,2)
     scatter(Xts(:,1),Xts(:,2),25,Yts);
@@ -96,24 +103,30 @@ if (p == 2)
     scatter(Xts(sel,1),Xts(sel,2),200,Yts(sel),'x'); 
     
     hold off
-    title('Test set RLS')
+    title(['RLS Test set with prediction error with \lambda: ', num2str(lambda)])
+end
+
 end
 
 %% III Attempt - Logistic Regression
 
 i=1;
+lambdaArray = [0 1];
+err = ones(1,size(lambdaArray,2))*99;
 
-for lambda = [0 1]
+for lambda = lambdaArray
     
     c = linearLRTrain(Xtr, Ytr, lambda);
     
-    [ypred, ppred] = linearLRTest(c, Xts);
+    [Ypred, ppred] = linearLRTest(c, Xts);
+    
+    err(i) = calcErr(Ypred, Yts);
 
     figure(1)
     subplot(1,2,i)
     scatter(Xts(:,1),Xts(:,2),25,Yts);
     hold on
-    sel = (sign(ypred) ~= Yts);
+    sel = (sign(Ypred) ~= Yts);
     scatter(Xts(sel,1),Xts(sel,2),200,Yts(sel),'x'); 
     separatingLinearLR(c, Xts, Yts)
     title(['Test set with prediction error with \lambda: ', num2str(lambda)])

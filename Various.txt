@@ -1,0 +1,21 @@
+%% Plot dataset if 2D
+
+if (p==2)
+    figure;
+    scatter(Xtr(:,1),Xtr(:,2),25,Ytr);
+    title('Training set')
+
+    % Dealing with offset: remove mean value from each example
+    M = mean(Xtr);
+    for i = 1:p
+        Xtr(:,i) = Xtr(:,i) - M(i);
+    end
+    M = mean(Xts);
+    for i = 1:p
+        Xts(:,i) = Xts(:,i) - M(i);
+    end
+
+    figure;
+    scatter(Xtr(:,1),Xtr(:,2),25,Ytr);
+    title('Training set without offset')
+end
