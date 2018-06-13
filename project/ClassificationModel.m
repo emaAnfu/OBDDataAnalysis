@@ -17,7 +17,7 @@ if (p == 2)
 end
 
 % Dealing with offset: remove mean value from each example
-if(true)
+if(false)
     M = mean(X);
     for i = 1:p
         X(:,i) = X(:,i) - M(i);
@@ -30,7 +30,7 @@ if(false)
 end
 
 % Divide dataset into training set and test set
-n_train = 10;
+n_train = 20;
 n_test = n-n_train;
 [Xtr, Ytr, Xts, Yts] = randomSplitDataset(X, Y, n_train, n_test);
 
@@ -48,7 +48,7 @@ sigmaArray = [0 1e-1 1 10];
 linspace(0.1 , 10 , 2);
 lambdaArray = [0 1e-5 1e-2 1e-1 1 1e1];
 kernel = 'gaussian';
-sigma=sigmaArray(2);%10
+sigma=sigmaArray(4);%10
 lambda=lambdaArray(2);%1e-5
 c = regularizedKernLSTrain(Xtr, Ytr, kernel, sigma, lambda);
 Ypred = sign(regularizedKernLSTest(c, Xtr, kernel, sigma, Xts));
@@ -104,6 +104,8 @@ if (p == 2)
     
     hold off
     title(['RLS Test set with prediction error with \lambda: ', num2str(lambda)])
+    
+    i = i + 1;
 end
 
 end
@@ -111,7 +113,7 @@ end
 %% III Attempt - Logistic Regression
 
 i=1;
-lambdaArray = [0 1];
+lambdaArray = [0 10];
 err = ones(1,size(lambdaArray,2))*99;
 
 for lambda = lambdaArray

@@ -321,6 +321,265 @@ labels = ones(size(Rsplitted,1),1) * (-1);
 [R,Yr]=CreateDataset('rpmDataset', R, Yr, Rsplitted, labels);
 [V,Yv]=CreateDataset('speedDataset', V, Yv, Vsplitted, labels);
 
+% These following are several more examples to ECO/sporting driving style,
+% it's better not to add them all to the highway/out-of-town classifier
+
+if(true)
+    
+%% 20 - Test_CampoOvadaEco_1 
+clc
+% Get data from the txt file created by phone and split into subsessions
+rpmFile = './UsedForDataset/12-06-18_21-13-01_rpm_measure_converted.txt';
+speedFile = './UsedForDataset/12-06-18_21-13-02_speed_measure_converted.txt';
+Ts = 0.250;
+[Rsplitted, Vsplitted, tsplitted] = SplitMeasure (rpmFile, speedFile, Ts, splitFactor, 0);
+% Prepare classification labels (out-of-town)
+labels = ones(size(Rsplitted,1),1) * (-1);
+% Update the two dataset, one for rpm and one for speed
+[R,Yr]=CreateDataset('rpmDataset', R, Yr, Rsplitted, labels);
+[V,Yv]=CreateDataset('speedDataset', V, Yv, Vsplitted, labels);
+%% 21 - Test_CampoOvadaEco_2
+clc
+% Get data from the txt file created by phone and split into subsessions
+rpmFile = './UsedForDataset/12-06-18_21-09-26_rpm_measure_converted.txt';
+speedFile = './UsedForDataset/12-06-18_21-09-26_speed_measure_converted.txt';
+Ts = 0.250;
+[Rsplitted, Vsplitted, tsplitted] = SplitMeasure (rpmFile, speedFile, Ts, splitFactor, 0);
+% Prepare classification labels (out-of-town)
+labels = ones(size(Rsplitted,1),1) * (-1);
+% Update the two dataset, one for rpm and one for speed
+[R,Yr]=CreateDataset('rpmDataset', R, Yr, Rsplitted, labels);
+[V,Yv]=CreateDataset('speedDataset', V, Yv, Vsplitted, labels);
+%% 22 - Test_CampoOvadaEco_3 
+clc
+% Get data from the txt file created by phone and split into subsessions
+rpmFile = './UsedForDataset/12-06-18_21-16-00_rpm_measure_converted.txt';
+speedFile = './UsedForDataset/12-06-18_21-16-00_speed_measure_converted.txt';
+Ts = 0.250;
+[Rsplitted, Vsplitted, tsplitted] = SplitMeasure (rpmFile, speedFile, Ts, splitFactor, 0);
+% Prepare classification labels (out-of-town)
+labels = ones(size(Rsplitted,1),1) * (-1);
+% Update the two dataset, one for rpm and one for speed
+[R,Yr]=CreateDataset('rpmDataset', R, Yr, Rsplitted, labels);
+[V,Yv]=CreateDataset('speedDataset', V, Yv, Vsplitted, labels);
+%% 23 - Test_CampoOvadaEco_4 
+clc
+% Get data from the txt file created by phone and split into subsessions
+rpmFile = './UsedForDataset/12-06-18_21-21-14_rpm_measure_converted.txt';
+speedFile = './UsedForDataset/12-06-18_21-21-14_speed_measure_converted.txt';
+Ts = 0.250;
+[Rsplitted, Vsplitted, tsplitted] = SplitMeasure (rpmFile, speedFile, Ts, splitFactor, 0);
+% Prepare classification labels (out-of-town)
+labels = ones(size(Rsplitted,1),1) * (-1);
+% Update the two dataset, one for rpm and one for speed
+[R,Yr]=CreateDataset('rpmDataset', R, Yr, Rsplitted, labels);
+[V,Yv]=CreateDataset('speedDataset', V, Yv, Vsplitted, labels);
+%% 24 - Test_CampoOvadaEco_5 
+clc
+% Get data from the txt file created by phone and split into subsessions
+rpmFile = './UsedForDataset/12-06-18_21-24-05_rpm_measure_converted.txt';
+speedFile = './UsedForDataset/12-06-18_21-24-05_speed_measure_converted.txt';
+Ts = 0.250;
+[Rsplitted, Vsplitted, tsplitted] = SplitMeasure (rpmFile, speedFile, Ts, splitFactor, 0);
+% Prepare classification labels (out-of-town)
+labels = ones(size(Rsplitted,1),1) * (-1);
+% Update the two dataset, one for rpm and one for speed
+[R,Yr]=CreateDataset('rpmDataset', R, Yr, Rsplitted, labels);
+[V,Yv]=CreateDataset('speedDataset', V, Yv, Vsplitted, labels);
+%% 25 - Test_CampoOvadaEco_6 
+clc
+% Get data from the txt file created by phone and split into subsessions
+rpmFile = './UsedForDataset/12-06-18_21-26-57_rpm_measure_converted.txt';
+speedFile = './UsedForDataset/12-06-18_21-26-58_speed_measure_converted.txt';
+Ts = 0.250;
+[Rsplitted, Vsplitted, tsplitted] = SplitMeasure (rpmFile, speedFile, Ts, splitFactor, 0);
+% Prepare classification labels (out-of-town)
+labels = ones(size(Rsplitted,1),1) * (-1);
+% Update the two dataset, one for rpm and one for speed
+[R,Yr]=CreateDataset('rpmDataset', R, Yr, Rsplitted, labels);
+[V,Yv]=CreateDataset('speedDataset', V, Yv, Vsplitted, labels);
+%% 26 - Test_OvadaCampoAllegro_1 
+clc
+% Get data from the txt file created by phone and split into subsessions
+rpmFile = './UsedForDataset/12-06-18_22-12-51_rpm_measure_converted.txt';
+speedFile = './UsedForDataset/12-06-18_22-12-51_speed_measure_converted.txt';
+Ts = 0.250;
+[Rsplitted, Vsplitted, tsplitted] = SplitMeasure (rpmFile, speedFile, Ts, splitFactor, 0);
+% Prepare classification labels (out-of-town)
+labels = ones(size(Rsplitted,1),1) * (-1);
+% Update the two dataset, one for rpm and one for speed
+[R,Yr]=CreateDataset('rpmDataset', R, Yr, Rsplitted, labels);
+[V,Yv]=CreateDataset('speedDataset', V, Yv, Vsplitted, labels);
+%% 27 - Test_OvadaCampoAllegro_2
+clc
+% Get data from the txt file created by phone and split into subsessions
+rpmFile = './UsedForDataset/12-06-18_22-15-46_rpm_measure_converted.txt';
+speedFile = './UsedForDataset/12-06-18_22-15-46_speed_measure_converted.txt';
+Ts = 0.250;
+[Rsplitted, Vsplitted, tsplitted] = SplitMeasure (rpmFile, speedFile, Ts, splitFactor, 0);
+% Prepare classification labels (out-of-town)
+labels = ones(size(Rsplitted,1),1) * (-1);
+% Update the two dataset, one for rpm and one for speed
+[R,Yr]=CreateDataset('rpmDataset', R, Yr, Rsplitted, labels);
+[V,Yv]=CreateDataset('speedDataset', V, Yv, Vsplitted, labels);
+%% 28 - Test_OvadaCampoAllegro_3 
+clc
+% Get data from the txt file created by phone and split into subsessions
+rpmFile = './UsedForDataset/12-06-18_22-18-50_rpm_measure_converted.txt';
+speedFile = './UsedForDataset/12-06-18_22-18-50_speed_measure_converted.txt';
+Ts = 0.250;
+[Rsplitted, Vsplitted, tsplitted] = SplitMeasure (rpmFile, speedFile, Ts, splitFactor, 0);
+% Prepare classification labels (out-of-town)
+labels = ones(size(Rsplitted,1),1) * (-1);
+% Update the two dataset, one for rpm and one for speed
+[R,Yr]=CreateDataset('rpmDataset', R, Yr, Rsplitted, labels);
+[V,Yv]=CreateDataset('speedDataset', V, Yv, Vsplitted, labels);
+%% 29 - Test_OvadaCampoAllegro_4
+clc
+% Get data from the txt file created by phone and split into subsessions
+rpmFile = './UsedForDataset/12-06-18_22-21-40_rpm_measure_converted.txt';
+speedFile = './UsedForDataset/12-06-18_22-21-40_speed_measure_converted.txt';
+Ts = 0.250;
+[Rsplitted, Vsplitted, tsplitted] = SplitMeasure (rpmFile, speedFile, Ts, splitFactor, 0);
+% Prepare classification labels (out-of-town)
+labels = ones(size(Rsplitted,1),1) * (-1);
+% Update the two dataset, one for rpm and one for speed
+[R,Yr]=CreateDataset('rpmDataset', R, Yr, Rsplitted, labels);
+[V,Yv]=CreateDataset('speedDataset', V, Yv, Vsplitted, labels);
+%% 30 - Test_OvadaCampoAllegro_5
+clc
+% Get data from the txt file created by phone and split into subsessions
+rpmFile = './UsedForDataset/12-06-18_22-24-42_rpm_measure_converted.txt';
+speedFile = './UsedForDataset/12-06-18_22-24-42_speed_measure_converted.txt';
+Ts = 0.250;
+[Rsplitted, Vsplitted, tsplitted] = SplitMeasure (rpmFile, speedFile, Ts, splitFactor, 0);
+% Prepare classification labels (out-of-town)
+labels = ones(size(Rsplitted,1),1) * (-1);
+% Update the two dataset, one for rpm and one for speed
+[R,Yr]=CreateDataset('rpmDataset', R, Yr, Rsplitted, labels);
+[V,Yv]=CreateDataset('speedDataset', V, Yv, Vsplitted, labels);
+%% 31 - Test_OvadaCampoAllegro_6
+clc
+% Get data from the txt file created by phone and split into subsessions
+rpmFile = './UsedForDataset/12-06-18_22-27-28_rpm_measure_converted.txt';
+speedFile = './UsedForDataset/12-06-18_22-27-28_speed_measure_converted.txt';
+Ts = 0.250;
+[Rsplitted, Vsplitted, tsplitted] = SplitMeasure (rpmFile, speedFile, Ts, splitFactor, 0);
+% Prepare classification labels (out-of-town)
+labels = ones(size(Rsplitted,1),1) * (-1);
+% Update the two dataset, one for rpm and one for speed
+[R,Yr]=CreateDataset('rpmDataset', R, Yr, Rsplitted, labels);
+[V,Yv]=CreateDataset('speedDataset', V, Yv, Vsplitted, labels);
+%% 32 - Test_OvadaCentro_1
+clc
+% Get data from the txt file created by phone and split into subsessions
+rpmFile = './UsedForDataset/12-06-18_21-36-45_rpm_measure_converted.txt';
+speedFile = './UsedForDataset/12-06-18_21-36-45_speed_measure_converted.txt';
+Ts = 0.250;
+[Rsplitted, Vsplitted, tsplitted] = SplitMeasure (rpmFile, speedFile, Ts, splitFactor, 0);
+% Prepare classification labels (city)
+labels = ones(size(Rsplitted,1),1) * (-1);
+% Update the two dataset, one for rpm and one for speed
+[R,Yr]=CreateDataset('rpmDataset', R, Yr, Rsplitted, labels);
+[V,Yv]=CreateDataset('speedDataset', V, Yv, Vsplitted, labels);
+%% 33 - Test_OvadaCentro_2
+clc
+% Get data from the txt file created by phone and split into subsessions
+rpmFile = './UsedForDataset/12-06-18_21-40-25_rpm_measure_converted.txt';
+speedFile = './UsedForDataset/12-06-18_21-40-25_speed_measure_converted.txt';
+Ts = 0.250;
+[Rsplitted, Vsplitted, tsplitted] = SplitMeasure (rpmFile, speedFile, Ts, splitFactor, 0);
+% Prepare classification labels (city)
+labels = ones(size(Rsplitted,1),1) * (-1);
+% Update the two dataset, one for rpm and one for speed
+[R,Yr]=CreateDataset('rpmDataset', R, Yr, Rsplitted, labels);
+[V,Yv]=CreateDataset('speedDataset', V, Yv, Vsplitted, labels);
+%% 34 - Test_OvadaCentro_3
+clc
+% Get data from the txt file created by phone and split into subsessions
+rpmFile = './UsedForDataset/12-06-18_21-43-20_rpm_measure_converted.txt';
+speedFile = './UsedForDataset/12-06-18_21-43-20_speed_measure_converted.txt';
+Ts = 0.250;
+[Rsplitted, Vsplitted, tsplitted] = SplitMeasure (rpmFile, speedFile, Ts, splitFactor, 0);
+% Prepare classification labels (city)
+labels = ones(size(Rsplitted,1),1) * (-1);
+% Update the two dataset, one for rpm and one for speed
+[R,Yr]=CreateDataset('rpmDataset', R, Yr, Rsplitted, labels);
+[V,Yv]=CreateDataset('speedDataset', V, Yv, Vsplitted, labels);
+%% 35 - Test_OvadaCentro_4
+clc
+% Get data from the txt file created by phone and split into subsessions
+rpmFile = './UsedForDataset/12-06-18_21-46-11_rpm_measure_converted.txt';
+speedFile = './UsedForDataset/12-06-18_21-46-11_speed_measure_converted.txt';
+Ts = 0.250;
+[Rsplitted, Vsplitted, tsplitted] = SplitMeasure (rpmFile, speedFile, Ts, splitFactor, 0);
+% Prepare classification labels (city)
+labels = ones(size(Rsplitted,1),1) * (-1);
+% Update the two dataset, one for rpm and one for speed
+[R,Yr]=CreateDataset('rpmDataset', R, Yr, Rsplitted, labels);
+[V,Yv]=CreateDataset('speedDataset', V, Yv, Vsplitted, labels);
+%% 36 - Test_OvadaCentro_5
+clc
+% Get data from the txt file created by phone and split into subsessions
+rpmFile = './UsedForDataset/12-06-18_21-49-09_rpm_measure_converted.txt';
+speedFile = './UsedForDataset/12-06-18_21-49-10_speed_measure_converted.txt';
+Ts = 0.250;
+[Rsplitted, Vsplitted, tsplitted] = SplitMeasure (rpmFile, speedFile, Ts, splitFactor, 0);
+% Prepare classification labels (city)
+labels = ones(size(Rsplitted,1),1) * (-1);
+% Update the two dataset, one for rpm and one for speed
+[R,Yr]=CreateDataset('rpmDataset', R, Yr, Rsplitted, labels);
+[V,Yv]=CreateDataset('speedDataset', V, Yv, Vsplitted, labels);
+%% 37 - Test_OvadaCentro_6
+clc
+% Get data from the txt file created by phone and split into subsessions
+rpmFile = './UsedForDataset/12-06-18_21-52-06_rpm_measure_converted.txt';
+speedFile = './UsedForDataset/12-06-18_21-52-06_speed_measure_converted.txt';
+Ts = 0.250;
+[Rsplitted, Vsplitted, tsplitted] = SplitMeasure (rpmFile, speedFile, Ts, splitFactor, 0);
+% Prepare classification labels (city)
+labels = ones(size(Rsplitted,1),1) * (-1);
+% Update the two dataset, one for rpm and one for speed
+[R,Yr]=CreateDataset('rpmDataset', R, Yr, Rsplitted, labels);
+[V,Yv]=CreateDataset('speedDataset', V, Yv, Vsplitted, labels);
+%% 38 - Test_OvadaCentro_7
+clc
+% Get data from the txt file created by phone and split into subsessions
+rpmFile = './UsedForDataset/12-06-18_22-04-52_rpm_measure_converted.txt';
+speedFile = './UsedForDataset/12-06-18_22-04-52_speed_measure_converted.txt';
+Ts = 0.250;
+[Rsplitted, Vsplitted, tsplitted] = SplitMeasure (rpmFile, speedFile, Ts, splitFactor, 0);
+% Prepare classification labels (city)
+labels = ones(size(Rsplitted,1),1) * (-1);
+% Update the two dataset, one for rpm and one for speed
+[R,Yr]=CreateDataset('rpmDataset', R, Yr, Rsplitted, labels);
+[V,Yv]=CreateDataset('speedDataset', V, Yv, Vsplitted, labels);
+%% 39 - Test_OvadaBrico_70kmh_1
+clc
+% Get data from the txt file created by phone and split into subsessions
+rpmFile = './UsedForDataset/12-06-18_21-58-14_rpm_measure_converted.txt';
+speedFile = './UsedForDataset/12-06-18_21-58-14_speed_measure_converted.txt';
+Ts = 0.250;
+[Rsplitted, Vsplitted, tsplitted] = SplitMeasure (rpmFile, speedFile, Ts, splitFactor, 0);
+% Prepare classification labels (out-of-town)
+labels = ones(size(Rsplitted,1),1) * (-1);
+% Update the two dataset, one for rpm and one for speed
+[R,Yr]=CreateDataset('rpmDataset', R, Yr, Rsplitted, labels);
+[V,Yv]=CreateDataset('speedDataset', V, Yv, Vsplitted, labels);
+%% 40 - Test_OvadaBrico_70kmh_2
+clc
+% Get data from the txt file created by phone and split into subsessions
+rpmFile = './UsedForDataset/12-06-18_22-01-03_rpm_measure_converted.txt';
+speedFile = './UsedForDataset/12-06-18_22-01-04_speed_measure_converted.txt';
+Ts = 0.250;
+[Rsplitted, Vsplitted, tsplitted] = SplitMeasure (rpmFile, speedFile, Ts, splitFactor, 0);
+% Prepare classification labels (out-of-town)
+labels = ones(size(Rsplitted,1),1) * (-1);
+% Update the two dataset, one for rpm and one for speed
+[R,Yr]=CreateDataset('rpmDataset', R, Yr, Rsplitted, labels);
+[V,Yv]=CreateDataset('speedDataset', V, Yv, Vsplitted, labels);
+
+end
 
 
 
