@@ -40,6 +40,8 @@ Xmean_tr = mean(Xtr);
 for i = 1:p
     Xc_tr(:,i) = Xtr(:,i) - Xmean_tr(i);    
 end
+Ymean_tr = mean(Ytr);
+Yc_tr = Ytr - Ymean_tr;
 
 %% Plot dataset if 2D
 close all
@@ -96,9 +98,12 @@ if (p == 2)
     
 end 
 
-%% II attempt - regularized linear least squares
+%% IIa attempt - regularized linear least squares with no offset
+
+close all
 
 lambdaArray = [0 1e-5 1e-2 1e-1 1 1e1];
+lambdaArray = 100
 nLambda = size(lambdaArray,2);
 err=ones(1,nLambda)*99;
 i=1;
@@ -132,7 +137,47 @@ for lambda = lambdaArray
 
 end
 
-%% III Attempt - Logistic Regression
+%% IIb attempt - regularized linear least squares with offset
+
+close all
+
+lambdaArray = [0 1e-5 1e-2 1e-1 1 1e1];
+lambdaArray = [100]
+nLambda = size(lambdaArray,2);
+err=ones(1,nLambda)*99;
+i=1;
+
+for lambda = lambdaArray
+    
+    [w] = regularizedLSTrain(Xc_tr, Yc_tr, lambda);
+    b = Ymean_tr - Xmean_tr*w;
+    Ypred = sign(regularizedLSTest_withOffset(w, b, Xts));
+    err(i) = calcErr(Ypred, Yts);
+
+    if (p == 2)
+        figure(i);
+
+        subplot(1,2,1)
+        scatter(Xtr(:,1),Xtr(:,2),25,Ytr);
+        separatingFRLS_withOffset(w, b, Xtr, Ytr); 
+        title(['RLS with offset Training set with prediction error with \lambda: ', num2str(lambda)])
+
+        subplot(1,2,2)
+        scatter(Xts(:,1),Xts(:,2),25,Yts);
+        separatingFRLS_withOffset(w, b, Xts, Yts);    
+        hold on
+        sel = (sign(Ypred) ~= Yts);
+        scatter(Xts(sel,1),Xts(sel,2),200,Yts(sel),'x'); 
+        hold off
+        title(['RLS with offset Test set with prediction error with \lambda: ', num2str(lambda)])
+       
+    end
+    
+     i = i + 1;
+
+end
+
+%% IIIa Attempt - Logistic Regression with no offset
 
 i=1;
 lambdaArray = [0 10];
@@ -160,6 +205,40 @@ for lambda = lambdaArray
 
 end 
 
+%% IIIb Attempt - Logistic Regression with offset 
+
+% -> it doesn't work, probably because the solution of the minimization
+% problem over w and b is not so simple when considering other loss
+% function than square loss
+
+close all
+
+i=1;
+lambdaArray = [0 10];
+err = ones(1,size(lambdaArray,2))*99;
+
+for lambda = lambdaArray
+    
+    c = linearLRTrain(Xc_tr, Yc_tr, lambda);
+    b = Ymean_tr - Xmean_tr*w;
+    
+    [Ypred, ppred] = linearLRTest_withOffset(c, b, Xts);
+    
+    err(i) = calcErr(Ypred, Yts);
+
+    figure(1)
+    subplot(1,2,i)
+    scatter(Xts(:,1),Xts(:,2),25,Yts);
+    hold on
+    sel = (sign(Ypred) ~= Yts);
+    scatter(Xts(sel,1),Xts(sel,2),200,Yts(sel),'x'); 
+    separatingLinearLR_withOffset(c, b, Xts, Yts)
+    title(['Test set with prediction error with \lambda: ', num2str(lambda)])
+    hold off
+        
+    i=i+1;
+
+end 
 
 
 
