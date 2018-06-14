@@ -16,12 +16,11 @@ if (p == 2)
     X = [X(:,1) X(:,7)];
 end
 
-% Dealing with offset: remove mean value from each example
-if(false)
-    M = mean(X);
-    for i = 1:p
-        X(:,i) = X(:,i) - M(i);
-    end
+% Detect max speed and max #gearShifts for the scatter grid
+if (p == 2)
+   maximums = max(X);
+   maxMeanSpeed = maximums(1);
+   maxShifts = maximums(2);
 end
 
 % Without the meanSpeed (maybe the most determinant feature)
@@ -30,16 +29,40 @@ if(false)
 end
 
 % Divide dataset into training set and test set
-n_train = 20;
+n_train = 15;
 n_test = n-n_train;
 [Xtr, Ytr, Xts, Yts] = randomSplitDataset(X, Y, n_train, n_test);
 
+%% Dealing with offset: remove mean value from each example
+
+Xc_tr = zeros(size(Xtr,1),size(Xtr,2));
+Xmean_tr = mean(Xtr);
+for i = 1:p
+    Xc_tr(:,i) = Xtr(:,i) - Xmean_tr(i);    
+end
+
 %% Plot dataset if 2D
+close all
 
 if (p==2)
+    
     figure;
+    subplot(1,2,1)   
     scatter(Xtr(:,1),Xtr(:,2),25,Ytr);
-    title('Training set')
+    axis([0 maxMeanSpeed 0 maxShifts])
+    title('Training set')  
+    subplot(1,2,2)  
+    scatter(Xts(:,1),Xts(:,2),25,Yts);
+    axis([0 maxMeanSpeed 0 maxShifts])
+    title('Test set')
+    
+    figure;
+    subplot(1,2,1)    
+    scatter(Xtr(:,1),Xtr(:,2),25,Ytr);
+    title('Training set')  
+    subplot(1,2,2)    
+    scatter(Xc_tr(:,1),Xc_tr(:,2),25,Ytr);
+    title('Test set centered')
 end
 
 %% I attempt - kernel regularized least squares
@@ -80,33 +103,32 @@ nLambda = size(lambdaArray,2);
 err=ones(1,nLambda)*99;
 i=1;
 
-%lambda = lambda(6);
-
 for lambda = lambdaArray
-w = regularizedLSTrain(Xtr, Ytr, lambda);
-Ypred = sign(regularizedLSTest(w, Xts));
-err(i) = calcErr(Ypred, Yts);
+    
+    w = regularizedLSTrain(Xtr, Ytr, lambda);
+    Ypred = sign(regularizedLSTest(w, Xts));
+    err(i) = calcErr(Ypred, Yts);
 
-if (p == 2)
-    figure(i);
+    if (p == 2)
+        figure(i);
+
+        subplot(1,2,1)
+        scatter(Xtr(:,1),Xtr(:,2),25,Ytr);
+        separatingFRLS(w, Xtr, Ytr); 
+        title(['RLS Training set with prediction error with \lambda: ', num2str(lambda)])
+
+        subplot(1,2,2)
+        scatter(Xts(:,1),Xts(:,2),25,Yts);
+        separatingFRLS(w, Xts, Yts);    
+        hold on
+        sel = (sign(Ypred) ~= Yts);
+        scatter(Xts(sel,1),Xts(sel,2),200,Yts(sel),'x'); 
+        hold off
+        title(['RLS Test set with prediction error with \lambda: ', num2str(lambda)])
+       
+    end
     
-    subplot(1,2,1)
-    scatter(Xtr(:,1),Xtr(:,2),25,Ytr);
-    separatingFRLS(w, Xtr, Ytr); 
-    title(['RLS Training set with prediction error with \lambda: ', num2str(lambda)])
-    
-    subplot(1,2,2)
-    scatter(Xts(:,1),Xts(:,2),25,Yts);
-    separatingFRLS(w, Xts, Yts);    
-    hold on
-    sel = (sign(Ypred) ~= Yts);
-    scatter(Xts(sel,1),Xts(sel,2),200,Yts(sel),'x'); 
-    
-    hold off
-    title(['RLS Test set with prediction error with \lambda: ', num2str(lambda)])
-    
-    i = i + 1;
-end
+     i = i + 1;
 
 end
 
