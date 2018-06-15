@@ -175,7 +175,7 @@ end
 
 %% IIb attempt - regularized linear least squares with offset
 
-if(true)
+if(false)
 
 close all
 clc
@@ -223,7 +223,7 @@ end
 if (true)
 
 i=1;
-lambdaArray = [0 1e-5 1e-2 1e-1 1 1e1];
+lambdaArray = [0 10];
 err = ones(1,size(lambdaArray,2))*99;
 
 for lambda = lambdaArray
@@ -289,23 +289,7 @@ end
 
 close all
 
-% perform cross-validation to find the best number of iterations 
-
-intIter = 2:p;
-perc=0.3;
-nrip=10;
-[it, Vm, Vs, Tm, Ts] = holdoutCVOMP(Xtr, Ytr, perc, nrip, intIter);
-
-figure
-plot(intIter, Tm, 'r');
-hold on;
-plot(intIter, Vm, 'b');
-hold off;
-title('Training (red) and validation (blue) error');
-
-% use it to run OMP
-
-T = it;
+T = 10;
 [ w, r, I ] = OMatchingPursuit( Xtr, Ytr, T);
 
 Ypred = sign(Xts * w);
@@ -331,9 +315,20 @@ if (p == 2)
 end
 
 figure
-scatter(1:p, abs(w), 'filled')
+scatter(1:p, abs(w))
 title('Coefficients  w');
 
+intIter = 2:p;
+perc=0.3;
+nrip=10;
+[it, Vm, Vs, Tm, Ts] = holdoutCVOMP(Xtr, Ytr, perc, nrip, intIter)
+
+figure(2);
+plot(intIter, Tm, 'r');
+hold on;
+plot(intIter, Vm, 'b');
+hold off;
+title('Training (red) and validation (blue) error');
 
 
 
