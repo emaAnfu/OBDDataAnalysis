@@ -1,5 +1,5 @@
-% This file executes all the operations needed to perform driving condition
-% recognition, as it was a dummy "main"
+% This file executes all the operations needed to perform driving style
+% data analysis, as it was a dummy "main"
 
 clc
 clear
@@ -21,7 +21,7 @@ Yv = Yv.Y;
 
 % Set Ts to a reasonable value (a mean of the values used creating the
 % dataset)
-Ts = 0.250;
+Ts = 0.200;
 % Create time axe using that Ts (this is a source of noise, because it is
 % like interpolating samples (with steps) in order to get a continuous
 % signal and sample this signal with the new Ts
@@ -56,7 +56,7 @@ save('obd_dataset.mat', 'X', 'Y');
 if (true)    
 
 figure 
-i = 19;
+i = 48;
 
 subplot(2,2,1)
 plot(t, R(i,:))
