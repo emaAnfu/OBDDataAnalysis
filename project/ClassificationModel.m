@@ -1,6 +1,6 @@
 % This file is used to load the dataset, split it into training and test
-% set, re-center data if needed and perform classification with several
-% algorithms
+% set, re-center data if needed and perform binary classification with 
+% several algorithms
 
 %% Run this section to load dataset 
 

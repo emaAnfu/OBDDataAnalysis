@@ -1,3 +1,7 @@
+% This file is used to load the dataset, split it into training and test
+% set, re-center data if needed and perform multi-class classification with 
+% several algorithms
+
 clc
 clear 
 close all
