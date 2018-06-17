@@ -56,7 +56,7 @@ save('obd_dataset.mat', 'X', 'Y');
 if (true)    
 
 figure 
-i = 48;
+i = 11;
 
 subplot(2,2,1)
 plot(t, R(i,:))

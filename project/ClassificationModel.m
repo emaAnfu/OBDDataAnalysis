@@ -18,7 +18,7 @@ n=size(X,1);
 m=size(X,2);
 
 % Number of features to take
-p = m;
+p = 2;
 % Select actual variables to use to classify
 if (p == 2)
     X = [X(:,1) X(:,7)];
@@ -80,7 +80,7 @@ end
 
 %% I attempt - kernel regularized least squares
 
-if (false)
+if (true)
     
 close all
 clc
@@ -107,13 +107,13 @@ for lambda = lambdaArray
 
         subplot(1,2,1)
         scatter(Xtr(:,1),Xtr(:,2),25,Ytr,'filled','MarkerEdgeColor',[0.5 .5 .5],'LineWidth',1);
-        separatingFKernRLS(c, Xtr, kernel, sigma, Xtr, Yts)
+        separatingFKernRLS(c, Xtr, kernel, sigma, Xtr)
         axis([0 maxFirstFeature 0 maxSecondFeature])
         title(['Training set KRLS with \lambda: ', num2str(lambda)])
 
         subplot(1,2,2)
         scatter(Xts(:,1),Xts(:,2),25,Yts,'filled','MarkerEdgeColor',[0.5 .5 .5],'LineWidth',1);
-        separatingFKernRLS(c, Xtr, kernel, sigma, Xts, Yts)
+        separatingFKernRLS(c, Xtr, kernel, sigma, Xts)
         axis([0 maxFirstFeature 0 maxSecondFeature])
         hold on
         sel = (sign(Ypred) ~= Yts);

@@ -1,4 +1,4 @@
-function separatingFKernRLS(c, Xtr, kernel, sigma, Xts, Yts)
+function separatingFKernRLS(c, Xtr, kernel, sigma, Xts)
 % function separatingFKernRLS(w, Xtr, kernel, sigma, Xts, Yts)
 % the function classifies points evenly sampled in a visualization area,
 % according to the classifier Regularized Least Squares
@@ -7,7 +7,6 @@ function separatingFKernRLS(c, Xtr, kernel, sigma, Xts, Yts)
 % Xtr - training examples
 % kernel, sigma - parameters used in learning the function
 % Xts - test examples on which to plot the separating function
-% Yts - test labels (they must be {-1, +1})
 %
 % lambda = 0.01;
 % kernel = 'gaussian';
