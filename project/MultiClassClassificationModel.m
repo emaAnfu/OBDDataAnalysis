@@ -106,6 +106,8 @@ for i = 1:T
         scatter(Xtr(:,1),Xtr(:,2),25,Ymmtr(:,i),'filled','MarkerEdgeColor',[0.5 .5 .5],'LineWidth',1);
         separatingFRLS_withOffset(w_temp, b_temp, Xtr, Ymmtr(:,i)); 
         title(['RLS with offset Training set with \lambda: ', num2str(lambda)])
+        xlabel('mean speed')
+        ylabel('rpm')
     end
 end
 
@@ -147,6 +149,8 @@ for i = 1:T
         scatter(Xtr(:,1),Xtr(:,2),25,Ymmtr(:,i),'filled','MarkerEdgeColor',[0.5 .5 .5],'LineWidth',1);
         separatingFKernRLS(c_temp, Xtr, kernel, sigma, Xtr)
         title(['KRLS Training set with \lambda: ', num2str(lambda)])
+        xlabel('mean speed')
+        ylabel('rpm')
     end
     C(:,i) = c_temp;
 end

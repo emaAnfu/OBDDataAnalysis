@@ -63,19 +63,27 @@ if (p==2)
     scatter(Xtr(:,1),Xtr(:,2),25,Ytr,'filled','MarkerEdgeColor',[0.5 .5 .5],'LineWidth',1);
     axis([0 maxFirstFeature 0 maxSecondFeature])
     title('Training set')  
+    xlabel('mean speed')
+    ylabel('# of gear shifts')
     subplot(1,2,2)  
     scatter(Xts(:,1),Xts(:,2),25,Yts,'filled','MarkerEdgeColor',[0.5 .5 .5],'LineWidth',1);
     axis([0 maxFirstFeature 0 maxSecondFeature])
     title('Test set')
+    xlabel('mean speed')
+    ylabel('# of gear shifts')
     
     figure;
     subplot(1,2,1)    
     scatter(Xtr(:,1),Xtr(:,2),25,Ytr,'filled','MarkerEdgeColor',[0.5 .5 .5],'LineWidth',1);
     axis([0 maxFirstFeature 0 maxSecondFeature])
-    title('Training set')  
+    title('Training set') 
+    xlabel('mean speed')
+    ylabel('# of gear shifts')
     subplot(1,2,2)    
     scatter(Xc_tr(:,1),Xc_tr(:,2),25,Ytr,'filled','MarkerEdgeColor',[0.5 .5 .5],'LineWidth',1);
     title('Training set centered')
+    xlabel('mean speed')
+    ylabel('# of gear shifts')
 end
 
 %% I attempt - kernel regularized least squares
@@ -110,6 +118,8 @@ for lambda = lambdaArray
         separatingFKernRLS(c, Xtr, kernel, sigma, Xtr)
         axis([0 maxFirstFeature 0 maxSecondFeature])
         title(['Training set KRLS with \lambda: ', num2str(lambda)])
+        xlabel('mean speed')
+        ylabel('# of gear shifts')
 
         subplot(1,2,2)
         scatter(Xts(:,1),Xts(:,2),25,Yts,'filled','MarkerEdgeColor',[0.5 .5 .5],'LineWidth',1);
@@ -120,6 +130,8 @@ for lambda = lambdaArray
         scatter(Xts(sel,1),Xts(sel,2),200,Yts(sel),'x','MarkerEdgeColor',[0.5 .5 .5]); 
         hold off
         title(['Test set KRLS with \lambda: ', num2str(lambda)])
+        xlabel('mean speed')
+        ylabel('# of gear shifts')
 
     end 
     
@@ -155,6 +167,8 @@ for lambda = lambdaArray
         scatter(Xtr(:,1),Xtr(:,2),25,Ytr,'filled','MarkerEdgeColor',[0.5 .5 .5],'LineWidth',1);
         separatingFRLS(w, Xtr, Ytr); 
         title(['RLS Training set with \lambda: ', num2str(lambda)])
+        xlabel('mean speed')
+        ylabel('# of gear shifts')
 
         subplot(1,2,2)
         scatter(Xts(:,1),Xts(:,2),25,Yts,'filled','MarkerEdgeColor',[0.5 .5 .5],'LineWidth',1);
@@ -164,6 +178,8 @@ for lambda = lambdaArray
         scatter(Xts(sel,1),Xts(sel,2),200,Yts(sel),'x','MarkerEdgeColor',[0.5 .5 .5]); 
         hold off
         title(['RLS Test set with prediction error with \lambda: ', num2str(lambda)])
+        xlabel('mean speed')
+        ylabel('# of gear shifts')
        
     end
     
@@ -200,6 +216,8 @@ for lambda = lambdaArray
         scatter(Xtr(:,1),Xtr(:,2),25,Ytr,'filled','MarkerEdgeColor',[0.5 .5 .5],'LineWidth',1);
         separatingFRLS_withOffset(w, b, Xtr, Ytr); 
         title(['RLS with offset Training set with \lambda: ', num2str(lambda)])
+        xlabel('mean speed')
+        ylabel('# of gear shifts')
 
         subplot(1,2,2)
         scatter(Xts(:,1),Xts(:,2),25,Yts,'filled','MarkerEdgeColor',[0.5 .5 .5],'LineWidth',1);
@@ -208,7 +226,9 @@ for lambda = lambdaArray
         sel = (sign(Ypred) ~= Yts);
         scatter(Xts(sel,1),Xts(sel,2),200,Yts(sel),'x','MarkerEdgeColor',[0.5 .5 .5]); 
         hold off
-        title(['RLS with offset Test set with prediction error with \lambda: ', num2str(lambda)])
+        title(['RLS with offset Test set with \lambda: ', num2str(lambda)])
+        xlabel('mean speed')
+        ylabel('# of gear shifts')
        
     end
     
@@ -241,6 +261,8 @@ for lambda = lambdaArray
         scatter(Xts(sel,1),Xts(sel,2),200,Yts(sel),'x','MarkerEdgeColor',[0.5 .5 .5]); 
         separatingLinearLR(c, Xts, Yts)
         title(['Test set with prediction error with \lambda: ', num2str(lambda)])
+        xlabel('mean speed')
+        ylabel('# of gear shifts')
         hold off
     end
         
@@ -277,6 +299,8 @@ for lambda = lambdaArray
     scatter(Xts(sel,1),Xts(sel,2),200,Yts(sel),'x','MarkerEdgeColor',[0.5 .5 .5]); 
     separatingLinearLR_withOffset(c, b, Xts, Yts)
     title(['Test set with prediction error with \lambda: ', num2str(lambda)])
+    xlabel('mean speed')
+    ylabel('# of gear shifts')
     hold off
         
     i=i+1;
